@@ -12,6 +12,6 @@ module UT2004Stats
   end
 
   class Kill
-    attr_accessor :killer, :victim, :weapon, :dmgtype
+    attr_accessor :killer_id, :victim_id, :weapon, :dmgtype
   end
 end

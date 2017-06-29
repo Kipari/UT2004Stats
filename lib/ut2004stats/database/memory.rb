@@ -6,8 +6,6 @@ module UT2004Stats
 
       def initialize
         @scores = {}
-        @seqnums = {}
-        @names = {}
         @kills = []
         @special_kills = []
         @players = {}
@@ -15,7 +13,7 @@ module UT2004Stats
       
       def score ( event )
         # Initialize score if not set
-        player = @players[@seqnums[event.player_seqnum].id]
+        player = @players[event.player_id]
         unless @scores[player]
           @scores[player] = 0
         end
@@ -43,8 +41,7 @@ module UT2004Stats
       end
       
       def player_name_change ( event )
-        player = @seqnums[event.player_seqnum]
-        @names[event.player_seqnum] = event.new_name
+        @players[event.player_id].name = event.new_name
       end
 
       def special_kill ( event)
@@ -53,40 +50,22 @@ module UT2004Stats
 
       def kill ( event )
         kill = Kill.new
-        kill.killer = @seqnums[event.player_seqnum].id
-        kill.victim = @seqnums[event.victim_seqnum].id
+        kill.killer_id = event.killer_id
+        kill.victim_id = event.victim_id
         kill.weapon = event.weapon
         kill.dmgtype = event.dmgtype
         @kills << kill
       end
 
-      def player_connect ( event )
-        player = Player.new
-        player.name = event.player_name
-        player.cdkey = event.cdkey
-        player.id = event.other_string
-
-        # If a player has no CD-key, he must be a bot
-        unless player.cdkey
-          player.name = "[BOT] #{player.id}"
-          player.bot = true
-          @players[player.id] = player
-        end
-
-        @seqnums[event.player_seqnum] = player
-      end
-
-      def player_string ( event )
-        player = @seqnums[event.player_seqnum]
-        player.uid = event.player_uid
-        player.bot = false
+      def new_player ( event )
+        player = event.player
         # Check if player already exists
         unless @players[player.id]
           @players[player.id] = player
         end
       end
       
-      attr_accessor :scores, :seqnums, :names, :kills, :players, :special_kills
+      attr_accessor :scores, :kills, :players, :special_kills
     end
   end
 end

@@ -25,8 +25,8 @@ else
 end
   
 output = players.map do |id,p|
-  kills = db.kills.select { |k| k.killer == id and players.include? k.victim }
-  deaths = db.kills.select { |k| k.victim == id and players.include? k.killer }
+  kills = db.kills.select { |k| k.killer_id == id and players.include? k.victim_id }
+  deaths = db.kills.select { |k| k.victim_id == id and players.include? k.killer_id }
   { :name => p.name, :kills => kills.count, :deaths => deaths.count, :id => id }
 end
 

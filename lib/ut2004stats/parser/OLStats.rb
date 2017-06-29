@@ -4,6 +4,11 @@ require_relative '../events'
 module UT2004Stats
   module Parser
     class OLStats
+      def initialize
+        @seqnums = {}
+        @temp_players = {}
+      end
+      
       def parse ( log, db )
         log.split("\n").each do |line|
           entry = line.split "\t"
@@ -11,8 +16,10 @@ module UT2004Stats
           timestamp = entry[0].to_f
           case entry[1].to_sym
           when :S # Score
+            player_seqnum = entry[2].to_i
+            
             event = ScoreEvent.new( timestamp )
-            event.player_seqnum = entry[2].to_i
+            event.player_id = @seqnums[player_seqnum]
             event.score = entry[3].to_f
             event.reason = entry[4]
 
@@ -34,42 +41,71 @@ module UT2004Stats
 
             db.server_init( event )
           when :C # Connect (player)
-            event = PlayerConnectEvent.new( timestamp )
-            event.player_seqnum = entry[2].to_i
-            event.other_string = entry[3]
-            event.player_name = entry[4]
-            event.cdkey = entry[5]
+            player_seqnum = entry[2].to_i
 
-            db.player_connect( event )
+            player = Player.new
+            player.id = entry[3]
+            player.name = entry[4]
+            player.cdkey = entry[5]
+
+            # If a player has no CD-key, he must be a bot
+            unless player.cdkey
+              player.name = "[BOT] #{player.id}"
+              player.bot = true
+              event = NewPlayerEvent.new( timestamp )
+              event.player = player
+
+              db.new_player( event )
+            else
+              @temp_players[player_seqnum] = player
+            end
+            
+            @seqnums[player_seqnum] = player.id
           when :G # Game? (name changes are included here)
             case entry[2].to_sym
             when :NameChange
+              player_seqnum = entry[3].to_i
+              player_id = @seqnums[player_seqnum]
+              
               event = PlayerNameChangeEvent.new( timestamp )
-              event.player_seqnum = entry[3].to_i
+              event.player_id = player_id
               event.new_name = entry[4]
               
               db.player_name_change( event )
             end
           when :SG # ?
           when :PS # Player String?
-            event = PlayerStringEvent.new( timestamp )
-            event.player_seqnum = entry[2].to_i
-            event.address = entry[3]
-            event.netspeed = entry[4]
-            event.player_uid = entry[5]
+            player_seqnum = entry[2].to_i
+            address = entry[3]
+            netspeed = entry[4]
+            player_uid = entry[5]
             
-            db.player_string( event )
+            player = @temp_players[player_seqnum]
+            @temp_players.delete( player_seqnum )
+            
+            player.uid = player_uid
+            player.bot = false
+
+            event = NewPlayerEvent.new( timestamp )
+            event.player = player
+            
+            db.new_player( event )
           when :BI # ?
-          when :P # Something with multikills and first bloods (also combos)
+          when :P # Something with multikills and first bloods (also combo rewards)
+            player_seqnum = entry[2].to_i
+
             event = SpecialKillEvent.new( timestamp )
-            event.player_seqnum = entry[2].to_i
+            event.player_id = @seqnums[player_seqnum]
             event.type = entry[3]
 
             db.special_kill( event )
           when :K # Kill
+            killer_seqnum = entry[2].to_i
+            victim_seqnum = entry[4].to_i
+            
             event = KillEvent.new( timestamp )
-            event.player_seqnum = entry[2].to_i
-            event.victim_seqnum = entry[4].to_i
+            event.killer_id = @seqnums[killer_seqnum]
+            event.victim_id = @seqnums[victim_seqnum]
             event.dmgtype = entry[3]
             event.weapon = entry[5]
 

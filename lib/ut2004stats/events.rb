@@ -27,31 +27,26 @@ module UT2004Stats
 
   class PlayerNameChangeEvent
     include LogEvent
-    attr_accessor :player_seqnum, :new_name
+    attr_accessor :player_id, :new_name
   end
 
   class ScoreEvent
     include LogEvent
-    attr_accessor :player_seqnum, :score, :reason
+    attr_accessor :player_id, :score, :reason
   end
 
   class KillEvent
     include LogEvent
-    attr_accessor :player_seqnum, :victim_seqnum, :dmgtype, :weapon
+    attr_accessor :killer_id, :victim_id, :dmgtype, :weapon
   end
 
   class SpecialKillEvent
     include LogEvent
-    attr_accessor :player_seqnum, :type
+    attr_accessor :player_id, :type
   end
 
-  class PlayerConnectEvent
+  class NewPlayerEvent
     include LogEvent
-    attr_accessor :player_seqnum, :player_name, :cdkey, :other_string
-  end
-
-  class PlayerStringEvent
-    include LogEvent
-    attr_accessor :player_seqnum, :address, :netspeed, :player_uid
+    attr_accessor :player
   end
 end
