@@ -112,6 +112,10 @@ module UT2004Stats
             db.kill( event )
           when :PP # ?
           when :EG # End Game
+            event = EndGameEvent.new( timestamp )
+            event.reason = entry[2]
+
+            db.end_game( event )
           end
         end
       end

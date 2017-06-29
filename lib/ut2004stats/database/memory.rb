@@ -5,18 +5,41 @@ module UT2004Stats
     class Memory
 
       def initialize
-        @scores = {}
+        clear_match_state()
+        @players = {}
+        @matches = []
+      end
+
+      def clear_match_state
+        @scores = Hash.new(0.0)
         @kills = []
         @special_kills = []
-        @players = {}
+        @current_match = nil
       end
+
+      ## Aggregating accessor methods
+
+      def scores
+        matches.inject(Hash.new(0)) do |memo, match|
+          match.scores.each { |k,v| memo[k] += v }
+          memo
+        end
+      end
+
+      def kills
+        matches.inject([]) { |memo, match| memo + match.kills }
+      end
+
+      def special_kills
+        matches.inject([]) { |memo, match| memo + match.special_kills }
+      end
+
       
+      ## Parser-called methods
+
       def score ( event )
         # Initialize score if not set
         player = @players[event.player_id]
-        unless @scores[player]
-          @scores[player] = 0
-        end
         
         @scores[player] += event.score
       end
@@ -32,8 +55,14 @@ module UT2004Stats
 
       def end_game ( event )
         if @current_match then
-          @matches << @current_match
-          @current_match = nil
+          match = @current_match
+          match.scores = @scores.clone
+          match.kills = @kills.clone
+          match.special_kills = @special_kills.clone
+          
+          @matches << match
+          
+          clear_match_state()
         end
       end
       
@@ -44,7 +73,7 @@ module UT2004Stats
         @players[event.player_id].name = event.new_name
       end
 
-      def special_kill ( event)
+      def special_kill ( event )
         @special_kills << event
       end
 
@@ -65,7 +94,7 @@ module UT2004Stats
         end
       end
       
-      attr_accessor :scores, :kills, :players, :special_kills
+      attr_accessor :players, :matches
     end
   end
 end

@@ -1,6 +1,6 @@
 module UT2004Stats
   class Match
-    attr_accessor :start_time, :map, :gamemode, :players
+    attr_accessor :start_time, :map, :gamemode, :players, :scores, :kills, :special_kills
   end
 
   class Player

@@ -49,4 +49,9 @@ module UT2004Stats
     include LogEvent
     attr_accessor :player
   end
+
+  class EndGameEvent
+    include LogEvent
+    attr_accessor :reason
+  end
 end
