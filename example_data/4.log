@@ -1,0 +1,83 @@
+OLStats v3.09 by OverloadUT www.Apartment167.com
+0.00	NG	2017-6-29 23:21:42	0	DM-Asbestos	Asbestos	Cliff Bleszinski	XGame.xDeathMatch	DeathMatch	Mutators=UnrealGame.DMMutator|XGame.MutInstaGib|OLStats.MutOLGameStats
+0.00	SI	UT2004 Server	0				\ServerMode\dedicated\AdminName\\AdminEmail\\ServerVersion\3369\GameStats\True\MaxSpectators\2\Mutator\MutInstaGib\Mutator\MutOLGameStats\MinPlayers\3\EndTimeDelay\4.00\GoalScore\15\TimeLimit\20\Translocator\False\WeaponStay\True\ForceRespawn\False\gamedifficulty\4.00\shortname\UT2 Server
+1.17	C	0	ade3c951b1170714c15188bbdc7c0ce5	Kipari	5b04570c0903045d
+1.17	PS	0	192.168.0.240:57782	10000	71d5bc2350a20816a36b2cd2c7ee76ec
+1.17	G	NameChange	0	Kipari
+11.03	SG
+30.01	PP	0	36
+45.59	C	1	Gaargod
+45.59	G	NameChange	1	[BOT]Gaargod
+45.59	BI	1	4.00	0.00	0.30	0.55	0.30	0.44	0.00	1.00	0.70	None
+45.59	P	1	first_blood
+45.59	K	1	DamTypeSuperShockBeam	0	SuperShockRifle
+45.59	S	1	1.00	frag
+55.48	K	1	DamTypeSuperShockBeam	0	SuperShockRifle
+55.48	S	1	1.00	frag
+60.03	PP	0	32
+90.07	PP	0	28
+92.91	K	1	DamTypeSuperShockBeam	0	SuperShockRifle
+92.91	S	1	1.00	frag
+101.73	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+101.73	S	0	1.00	frag
+114.19	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+114.19	S	0	1.00	frag
+120.10	PP	0	28
+131.44	C	2	Axon
+131.44	G	NameChange	2	[BOT]Axon
+131.44	BI	2	4.00	0.00	0.15	0.20	1.00	0.00	0.00	1.00	1.00	None
+131.44	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+131.44	S	0	1.00	frag
+140.24	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+140.24	S	0	1.00	frag
+150.13	PP	0	28
+166.16	P	0	spree_1
+166.16	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+166.16	S	0	1.00	frag
+170.94	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+170.94	S	0	1.00	frag
+179.57	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+179.57	S	0	1.00	frag
+180.13	PP	0	28
+188.07	K	2	DamTypeSuperShockBeam	0	SuperShockRifle
+188.07	S	2	1.00	frag
+193.94	K	1	DamTypeSuperShockBeam	2	SuperShockRifle
+193.94	S	1	1.00	frag
+200.01	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+200.01	S	0	1.00	frag
+210.15	PP	0	28
+213.80	K	1	DamTypeSuperShockBeam	2	SuperShockRifle
+213.80	S	1	1.00	frag
+228.48	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+228.48	S	0	1.00	frag
+234.83	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+234.83	S	0	1.00	frag
+240.15	PP	0	28
+247.19	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+247.19	S	0	1.00	frag
+254.45	P	0	spree_1
+254.45	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+254.45	S	0	1.00	frag
+258.68	K	1	DamTypeSuperShockBeam	2	SuperShockRifle
+258.68	S	1	1.00	frag
+268.69	K	2	DamTypeSuperShockBeam	1	SuperShockRifle
+268.69	S	2	1.00	frag
+270.17	PP	0	28
+279.61	K	1	DamTypeSuperShockBeam	2	SuperShockRifle
+279.61	S	1	1.00	frag
+287.13	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+287.13	S	0	1.00	frag
+291.95	K	2	DamTypeSuperShockBeam	0	SuperShockRifle
+291.95	S	2	1.00	frag
+300.18	PP	0	28
+305.77	K	2	DamTypeSuperShockBeam	1	SuperShockRifle
+305.77	S	2	1.00	frag
+318.40	K	2	DamTypeSuperShockBeam	1	SuperShockRifle
+318.40	S	2	1.00	frag
+319.45	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+319.45	S	0	1.00	frag
+325.66	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+325.66	S	0	1.00	frag
+325.66	EG	fraglimit	0	1	2
+330.23	PP	0	28
+

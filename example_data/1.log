@@ -1,0 +1,34 @@
+OLStats v3.09 by OverloadUT www.Apartment167.com
+0.00	NG	2017-6-29 15:26:53	0	DM-1on1-Albatross	Albatross	Ryan Brucks	XGame.xDeathMatch	DeathMatch	Mutators=UnrealGame.DMMutator|XGame.MutInstaGib|OLStats.MutOLGameStats
+0.00	SI	UT2004 Server	0				\ServerMode\dedicated\AdminName\\AdminEmail\\ServerVersion\3369\GameStats\True\MaxSpectators\2\Mutator\MutInstaGib\Mutator\MutOLGameStats\MinPlayers\3\EndTimeDelay\4.00\GoalScore\5\TimeLimit\20\Translocator\False\WeaponStay\True\ForceRespawn\False\gamedifficulty\4.00\shortname\UT2 Server
+2.00	C	0	ade3c951b1170714c15188bbdc7c0ce5	Kipari	5b04570c0903045d
+2.00	PS	0	192.168.0.240:62900	10000	71d5bc2350a20816a36b2cd2c7ee76ec
+2.00	G	NameChange	0	Kipari
+11.02	SG
+15.66	P	0	first_blood
+15.66	C	1	Selig
+15.66	G	NameChange	1	[BOT]Selig
+15.66	BI	1	4.00	0.00	0.10	0.40	1.00	0.20	0.00	1.00	0.00	RocketLauncher
+15.66	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+15.66	S	0	1.00	frag
+19.58	P	0	multikill_1
+19.58	C	2	Aryss
+19.58	G	NameChange	2	[BOT]Aryss
+19.58	BI	2	4.00	0.00	0.05	0.40	0.45	0.10	0.30	1.00	0.00	Minigun
+19.58	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+19.58	S	0	1.00	frag
+22.24	K	1	DamTypeSuperShockBeam	0	SuperShockRifle
+22.24	S	1	1.00	frag
+30.02	PP	0	32
+44.80	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+44.80	S	0	1.00	frag
+49.20	K	2	DamTypeSuperShockBeam	1	SuperShockRifle
+49.20	S	2	1.00	frag
+51.08	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+51.08	S	0	1.00	frag
+60.07	PP	0	28
+63.65	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+63.65	S	0	1.00	frag
+63.65	EG	fraglimit	0	1	2
+90.10	PP	0	28
+

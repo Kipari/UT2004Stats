@@ -1,0 +1,79 @@
+OLStats v3.09 by OverloadUT www.Apartment167.com
+0.00	NG	2017-6-29 21:22:7	0	DM-1on1-Albatross	Albatross	Ryan Brucks	XGame.xDeathMatch	DeathMatch	Mutators=UnrealGame.DMMutator|XGame.MutInstaGib|OLStats.MutOLGameStats
+0.00	SI	UT2004 Server	0				\ServerMode\dedicated\AdminName\\AdminEmail\\ServerVersion\3369\GameStats\True\MaxSpectators\2\Mutator\MutInstaGib\Mutator\MutOLGameStats\MinPlayers\3\EndTimeDelay\4.00\GoalScore\15\TimeLimit\20\Translocator\False\WeaponStay\True\ForceRespawn\False\gamedifficulty\4.00\shortname\UT2 Server
+17.09	C	0	ade3c951b1170714c15188bbdc7c0ce5	Kipari	5b04570c0903045d
+17.09	PS	0	192.168.0.240:55414	10000	71d5bc2350a20816a36b2cd2c7ee76ec
+17.09	G	NameChange	0	Kipari
+26.45	SG
+30.05	PP	0	24
+30.32	C	2	Othello
+30.32	G	NameChange	2	[BOT]Othello
+30.32	BI	2	4.00	0.00	-0.10	0.40	0.30	0.30	0.50	1.00	0.00	FlakCannon
+30.32	P	2	first_blood
+30.32	C	1	Gorge
+30.32	G	NameChange	1	[BOT]Gorge
+30.32	BI	1	4.00	0.00	0.00	0.50	0.00	0.30	0.50	1.00	0.00	None
+30.32	K	2	DamTypeSuperShockBeam	1	SuperShockRifle
+30.32	S	2	1.00	frag
+42.92	K	1	DamTypeSuperShockBeam	0	SuperShockRifle
+42.92	S	1	1.00	frag
+45.80	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+45.80	S	0	1.00	frag
+51.16	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+51.16	S	0	1.00	frag
+54.87	P	0	multikill_1
+54.87	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+54.87	S	0	1.00	frag
+54.98	K	1	DamTypeSuperShockBeam	0	SuperShockRifle
+54.98	S	1	1.00	frag
+60.06	PP	0	24
+67.69	K	1	DamTypeSuperShockBeam	2	SuperShockRifle
+67.69	S	1	1.00	frag
+70.96	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+70.96	S	0	1.00	frag
+74.48	K	2	DamTypeSuperShockBeam	1	SuperShockRifle
+74.48	S	2	1.00	frag
+78.24	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+78.24	S	0	1.00	frag
+85.47	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+85.47	S	0	1.00	frag
+88.17	P	0	multikill_1
+88.17	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+88.17	S	0	1.00	frag
+90.11	PP	0	28
+91.76	P	0	multikill_2
+91.76	P	0	spree_1
+91.76	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+91.76	S	0	1.00	frag
+95.15	P	0	multikill_3
+95.15	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+95.15	S	0	1.00	frag
+97.31	P	0	multikill_4
+97.31	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+97.31	S	0	1.00	frag
+99.70	P	0	XGame.ComboSpeed
+103.31	K	2	DamTypeSuperShockBeam	0	SuperShockRifle
+103.31	S	2	1.00	frag
+107.24	K	2	DamTypeSuperShockBeam	1	SuperShockRifle
+107.24	S	2	1.00	frag
+114.92	K	2	DamTypeSuperShockBeam	0	SuperShockRifle
+114.92	S	2	1.00	frag
+117.52	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+117.52	S	0	1.00	frag
+120.13	PP	0	28
+120.41	K	1	DamTypeSuperShockBeam	0	SuperShockRifle
+120.41	S	1	1.00	frag
+126.39	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+126.39	S	0	1.00	frag
+136.83	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+136.83	S	0	1.00	frag
+144.33	K	0	DamTypeSuperShockBeam	2	SuperShockRifle
+144.33	S	0	1.00	frag
+146.69	K	1	DamTypeSuperShockBeam	2	SuperShockRifle
+146.69	S	1	1.00	frag
+150.18	PP	0	28
+153.61	K	0	DamTypeSuperShockBeam	1	SuperShockRifle
+153.61	S	0	1.00	frag
+153.61	EG	fraglimit	0	1	2
+180.21	PP	0	28
+
