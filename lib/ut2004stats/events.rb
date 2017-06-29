@@ -8,7 +8,7 @@ module UT2004Stats
   
   class NewGameEvent
     include LogEvent
-    attr_accessor :time, :map_file, :map, :map_creator, :gamemode, :params
+    attr_accessor :start_time, :map_file, :map, :map_creator, :gamemode, :params
   end
 
   class ServerInitEvent
@@ -24,5 +24,25 @@ module UT2004Stats
   class ScoreEvent
     include LogEvent
     attr_accessor :player_seqnum, :score, :reason
+  end
+
+  class KillEvent
+    include LogEvent
+    attr_accessor :player_seqnum, :victim_seqnum, :damage_type, :weapon
+  end
+
+  class SpecialKillEvent
+    include LogEvent
+    attr_accessor :player_seqnum, :type
+  end
+
+  class PlayerConnectEvent
+    include LogEvent
+    attr_accessor :player_seqnum, :player_name, :cdkey, :other_string
+  end
+
+  class PlayerStringEvent
+    include LogEvent
+    attr_accessor :player_seqnum, :address, :netspeed, :player_uid
   end
 end

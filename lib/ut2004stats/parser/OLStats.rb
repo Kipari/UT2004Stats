@@ -19,7 +19,7 @@ module UT2004Stats
             db.score( event )
           when :NG # New Game
             event = NewGameEvent.new( timestamp )
-            event.time = Date.parse( entry[2] )
+            event.start_time = Date.parse( entry[2] )
             event.map_file = entry[4]
             event.map = entry[5]
             event.map_creator = entry[6]
@@ -34,22 +34,46 @@ module UT2004Stats
 
             db.server_init( event )
           when :C # Connect (player)
-          when :G # Game? (name changes are included here)
-            game_event_type = entry[2].to_sym
+            event = PlayerConnectEvent.new( timestamp )
+            event.player_seqnum = entry[2].to_i
+            event.other_string = entry[3]
+            event.player_name = entry[4]
+            event.cdkey = entry[5]
 
-            case game_event_type
+            db.player_connect( event )
+          when :G # Game? (name changes are included here)
+            case entry[2].to_sym
             when :NameChange
-              event = PlayerNameChangeEvent.new ( timestamp )
+              event = PlayerNameChangeEvent.new( timestamp )
               event.player_seqnum = entry[3].to_i
               event.new_name = entry[4]
               
               db.player_name_change( event )
             end
           when :SG # ?
-          when :PS # ?
+          when :PS # Player String?
+            event = PlayerStringEvent.new( timestamp )
+            event.player_seqnum = entry[2].to_i
+            event.address = entry[3]
+            event.netspeed = entry[4]
+            event.player_uid = entry[5]
+            
+            db.player_string( event )
           when :BI # ?
-          when :P # Something with multikills
+          when :P # Something with multikills and first bloods
+            event = SpecialKillEvent.new( timestamp )
+            event.player_seqnum = entry[2].to_i
+            event.type = entry[3]
+
+            db.special_kill( event )
           when :K # Kill
+            event = KillEvent.new( timestamp )
+            event.player_seqnum = entry[2]
+            event.victim_seqnum = entry[4]
+            event.damage_type = entry[3]
+            event.weapon = entry[5]
+
+            db.kill( event )
           when :PP # ?
           when :EG # End Game
           end
