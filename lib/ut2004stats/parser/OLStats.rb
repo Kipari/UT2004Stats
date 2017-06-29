@@ -12,7 +12,7 @@ module UT2004Stats
           case entry[1].to_sym
           when :S # Score
             event = ScoreEvent.new( timestamp )
-            event.player_seqnum = entry[2]
+            event.player_seqnum = entry[2].to_i
             event.score = entry[3].to_f
             event.reason = entry[4]
 
@@ -60,7 +60,7 @@ module UT2004Stats
             
             db.player_string( event )
           when :BI # ?
-          when :P # Something with multikills and first bloods
+          when :P # Something with multikills and first bloods (also combos)
             event = SpecialKillEvent.new( timestamp )
             event.player_seqnum = entry[2].to_i
             event.type = entry[3]
@@ -68,9 +68,9 @@ module UT2004Stats
             db.special_kill( event )
           when :K # Kill
             event = KillEvent.new( timestamp )
-            event.player_seqnum = entry[2]
-            event.victim_seqnum = entry[4]
-            event.damage_type = entry[3]
+            event.player_seqnum = entry[2].to_i
+            event.victim_seqnum = entry[4].to_i
+            event.dmgtype = entry[3]
             event.weapon = entry[5]
 
             db.kill( event )

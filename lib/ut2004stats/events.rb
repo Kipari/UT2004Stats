@@ -3,6 +3,15 @@ module UT2004Stats
     def initialize ( timestamp )
       @timestamp = timestamp
     end
+
+    def ==(other)
+      other.class == self.class && other.state == self.state
+    end
+
+    def state
+      self.instance_variables.map { |variable| self.instance_variable_get variable }
+    end
+    
     attr_accessor :timestamp
   end
   
@@ -28,7 +37,7 @@ module UT2004Stats
 
   class KillEvent
     include LogEvent
-    attr_accessor :player_seqnum, :victim_seqnum, :damage_type, :weapon
+    attr_accessor :player_seqnum, :victim_seqnum, :dmgtype, :weapon
   end
 
   class SpecialKillEvent

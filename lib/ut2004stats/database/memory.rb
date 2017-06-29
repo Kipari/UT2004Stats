@@ -15,11 +15,12 @@ module UT2004Stats
       
       def score ( event )
         # Initialize score if not set
-        unless @scores[event.player_seqnum]
-          @scores[event.player_seqnum] = 0
+        player = @players[@seqnums[event.player_seqnum].id]
+        unless @scores[player]
+          @scores[player] = 0
         end
         
-        @scores[event.player_seqnum] += event.score
+        @scores[player] += event.score
       end
       
       def new_game ( event )
@@ -42,6 +43,7 @@ module UT2004Stats
       end
       
       def player_name_change ( event )
+        player = @seqnums[event.player_seqnum]
         @names[event.player_seqnum] = event.new_name
       end
 
@@ -50,22 +52,38 @@ module UT2004Stats
       end
 
       def kill ( event )
-        @kills << event
+        kill = Kill.new
+        kill.killer = @seqnums[event.player_seqnum].id
+        kill.victim = @seqnums[event.victim_seqnum].id
+        kill.weapon = event.weapon
+        kill.dmgtype = event.dmgtype
+        @kills << kill
       end
 
       def player_connect ( event )
         player = Player.new
         player.name = event.player_name
         player.cdkey = event.cdkey
-        player.other_string = event.other_string
-       
+        player.id = event.other_string
+
+        # If a player has no CD-key, he must be a bot
+        unless player.cdkey
+          player.name = "[BOT] #{player.id}"
+          player.bot = true
+          @players[player.id] = player
+        end
+
         @seqnums[event.player_seqnum] = player
       end
 
       def player_string ( event )
         player = @seqnums[event.player_seqnum]
         player.uid = event.player_uid
-        @players[player.uid] = player
+        player.bot = false
+        # Check if player already exists
+        unless @players[player.id]
+          @players[player.id] = player
+        end
       end
       
       attr_accessor :scores, :seqnums, :names, :kills, :players, :special_kills
