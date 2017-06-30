@@ -44,7 +44,7 @@ module UT2004Stats
             player_seqnum = entry[2].to_i
 
             player = Player.new
-            player.id = entry[3]
+            player.id = entry[4]
             player.name = entry[4]
             player.cdkey = entry[5]
 
