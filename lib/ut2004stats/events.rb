@@ -17,7 +17,7 @@ module UT2004Stats
   
   class NewGameEvent
     include LogEvent
-    attr_accessor :start_time, :map_file, :map, :map_creator, :gamemode, :params
+    attr_accessor :start_time, :map, :map_name, :map_creator, :gamemode, :params
   end
 
   class ServerInitEvent

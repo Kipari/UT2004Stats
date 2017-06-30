@@ -27,9 +27,9 @@ module UT2004Stats
             db.score( event )
           when :NG # New Game
             event = NewGameEvent.new( timestamp )
-            event.start_time = Date.parse( entry[2] )
-            event.map_file = entry[4]
-            event.map = entry[5]
+            event.start_time = DateTime.parse( entry[2] )
+            event.map = entry[4]
+            event.map_name = entry[5]
             event.map_creator = entry[6]
             event.gamemode = entry[7]
             event.params = entry[8]

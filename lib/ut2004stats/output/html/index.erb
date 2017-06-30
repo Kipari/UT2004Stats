@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1>UT2004 Stats</h1>
-    <h2>Stats summary</h2>
+    <h2>Summary</h2>
     <table>
       <tr>
 	<th>Players</th>
@@ -25,6 +25,24 @@
 	<td>#{db.scores.values.sum}</td>
       </tr>}
       %>
+    </table>
+
+    <h2>Matches</h2>
+    <table>
+      <tr>
+	<th>Time</th>
+	<th>Map</th>
+	<th>Gamemode</th>
+      </tr>
+      <% db.matches.each do |match| %>
+      <%= %Q{
+      <tr>
+	<td>#{match.start_time.strftime("%a, %b %e %Y at %H:%M")}</td>
+	<td>#{match.map}</td>
+	<td>#{UT2004Stats::Strings::GAMEMODES[match.gamemode] || match.gamemode}</td>
+      </tr>}
+      %>
+      <% end %>
     </table>
     <br />
     <i>Page generated at <%= Time.now %></i>

@@ -3,6 +3,7 @@
 require 'ut2004stats/parser/OLStats'
 require 'ut2004stats/database/memory'
 require 'ut2004stats/output/html'
+require 'ut2004stats/pretty'
 
 require 'optparse'
 

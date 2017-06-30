@@ -8,5 +8,7 @@ module UT2004Stats
                       "first_blood" => "first blood",
                       "spree_1" => "killing spree" }
     WEAPONS = { "SuperShockRifle" => "Insta-gib Rifle" }
+    GAMEMODES = { "XGame.xDeathMatch" => "Deathmatch",
+                  "Onslaught.ONSOnslaughtGame" => "Onslaught" }
   end
 end

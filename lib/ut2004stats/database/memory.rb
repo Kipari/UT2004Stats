@@ -3,7 +3,6 @@ require_relative '../game'
 module UT2004Stats
   module Database
     class Memory
-
       def initialize
         clear_match_state()
         @players = {}
