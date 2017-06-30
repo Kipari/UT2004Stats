@@ -27,7 +27,7 @@ end
 output = players.map do |id,p|
   kills = db.kills.select { |k| k.killer_id == id and players.include? k.victim_id }
   deaths = db.kills.select { |k| k.victim_id == id and players.include? k.killer_id }
-  { :name => p.name, :kills => kills.count, :deaths => deaths.count, :id => id }
+  { :name => p.name, :kills => kills.count, :deaths => deaths.count, :kd => (kills.count.to_f/deaths.count.to_f), :id => id }
 end
 
-output.each { |p| puts "#{p[:name]}, #{p[:kills]}, #{p[:deaths]}, #{p[:id]}" }
+output.each { |p| puts "#{p[:name]}, #{p[:kills]}, #{p[:deaths]}, #{p[:kd]}, #{p[:id]}" }
