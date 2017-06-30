@@ -10,8 +10,9 @@ module UT2004Stats
       end
       
       def parse ( log, db )
-        log.split("\n").each do |line|
-          entry = line.split "\t"
+        # gsub converts DOS-style line breaks to Unix-style line breaks
+        log.gsub(/\r/,"").split("\n").each do |line|
+          entry = line.split("\t")
           next unless entry.length > 1
           timestamp = entry[0].to_f
           case entry[1].to_sym
@@ -45,7 +46,6 @@ module UT2004Stats
 
             player = Player.new
             player.id = entry[4]
-            player.name = entry[4]
             player.cdkey = entry[5]
 
             # If a player has no CD-key, he must be a bot
@@ -81,7 +81,6 @@ module UT2004Stats
             player_uid = entry[5]
             
             player = @temp_players[player_seqnum]
-            @temp_players.delete( player_seqnum )
             
             player.uid = player_uid
             player.bot = false
@@ -90,6 +89,7 @@ module UT2004Stats
             event.player = player
             
             db.new_player( event )
+            @temp_players.delete( player_seqnum )
           when :BI # ?
           when :P # Something with multikills and first bloods (also combo rewards)
             player_seqnum = entry[2].to_i
