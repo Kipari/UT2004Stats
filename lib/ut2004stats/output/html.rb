@@ -2,6 +2,7 @@ require 'ut2004stats/events'
 require 'ut2004stats/game'
 
 require 'erb'
+require 'fileutils'
 
 module UT2004Stats
   module Output
@@ -12,7 +13,8 @@ module UT2004Stats
         # Player data retrieval
         players = db.players.select { |id, p| p.bot? == false }
         player_data = players.map do |id, player|
-	  { :name => player.name,
+	  { :id => id,
+            :name => player.name,
             :kill_count => db.kills.select { |k| k.killer_id == id and players.include? k.victim_id }.count,
             :death_count => db.kills.select { |k| k.victim_id == id and players.include? k.killer_id }.count,
             :match_count => db.matches.select { |m| m.players.include?(id) }.count }
@@ -26,6 +28,8 @@ module UT2004Stats
           vars.local_variable_set(:player_data, player_data)
           f << ERB.new(File.read "#{dir}/html/index.erb").result(vars)
         end
+
+        FileUtils.cp("#{dir}/html/style.css", out_dir)
       end
     end
   end

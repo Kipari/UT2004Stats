@@ -1,0 +1,56 @@
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    background-color: #111;
+    color: #eee;
+    margin-left: 30px;
+}
+
+
+h1, h2, h3, h4 {
+    font-weight: normal;
+    color: #FFF4C2;
+}
+
+a:link, a:visited {
+    color: #FDD932;
+    transition-duration: 0.3s;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #FFF;
+    transition-duration: 0.3s;
+}
+
+ul {
+    list-style-type: square;
+
+}
+
+table {
+    border-spacing: 1px;
+    border: 2px solid #444;
+}
+
+td {
+    background-color: #2E3038;
+    text-align: center;
+    font-size: 8pt;
+}
+
+td.hl {
+    background-color: #666;
+}
+
+th {
+    background-color: #000;
+    font-size: 8pt;
+    padding-left: 4pt;
+    padding-right: 4pt;
+}
+
+th.desc {
+    color: #FFF4C2;
+    font-size: 10pt;
+}

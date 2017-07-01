@@ -12,6 +12,9 @@
     <h2>Summary</h2>
     <table>
       <tr>
+	<th class="desc" colspan="4">Summary of server stats</th>
+      </tr>
+      <tr>
 	<th>Players</th>
 	<th>Matches</th>
 	<th>Kills</th>
@@ -19,29 +22,36 @@
       </tr>
       <%= %Q{
       <tr>
-        <td>#{db.players.select {|id,p| not p.bot?}.count}</td>
-        <td>#{db.matches.count}</td>
-	<td>#{db.kills.count}</td>
-	<td>#{db.scores.values.sum}</td>
+        <td class=\"hl\">#{db.players.select {|id,p| not p.bot?}.count}</td>
+        <td class=\"hl\">#{db.matches.count}</td>
+	<td class=\"hl\">#{db.kills.count}</td>
+	<td class=\"hl\">#{db.scores.values.sum}</td>
       </tr>}
       %>
     </table>
 
-        <h2>Players</h2>
+    <h2>Players</h2>
     <table>
       <tr>
+	<th class="desc" colspan="5">Top players by # matches played</th>
+      </tr>
+      <tr>
+	<th>Rank #</th>
 	<th>Name</th>
 	<th>Kills</th>
 	<th>Deaths</th>
 	<th>Matches</th>
       </tr>
-      <% player_data.each do |player| %>
+      <% rank = 0
+	 player_data.each do |player|
+	   rank += 1%>
       <%= %Q{
       <tr>
-	<td>#{player[:name]}</td>
+	<td class=\"hl\">#{rank}</td>
+	<td><a href="/player/#{player[:id]}">#{player[:name]}</a></td>
 	<td>#{player[:kill_count]}</td>
 	<td>#{player[:death_count]}</td>
-	<td>#{player[:match_count]}</td>
+	<td class=\"hl\">#{player[:match_count]}</td>
       </tr>}
       %>
       <% end %>
@@ -50,14 +60,17 @@
     <h2>Matches</h2>
     <table>
       <tr>
+	<th class="desc" colspan="3">Latest 10 matches played</th>
+      </tr>
+      <tr>
 	<th>Time</th>
 	<th>Map</th>
 	<th>Gamemode</th>
       </tr>
-      <% db.matches.sort.reverse.each do |match| %>
+      <% db.matches.sort.reverse[0..9].each do |match| %>
       <%= %Q{
       <tr>
-	<td>#{match.start_time.strftime("%a, %b %e %Y at %H:%M")}</td>
+	<td><a href="/match/#">#{match.start_time.strftime("%a, %b %e %Y at %H:%M")}</a></td>
 	<td>#{match.map}</td>
 	<td>#{UT2004Stats::Strings::GAMEMODES[match.gamemode] || match.gamemode}</td>
       </tr>}
