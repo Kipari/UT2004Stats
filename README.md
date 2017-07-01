@@ -17,8 +17,7 @@ Reports data as:
 
 HTML report with data parsed from an OLStats log and stored in memory
 
-![HTML report with data parsed from an OLStats log and stored in memory]
-(https://dcav.pw/c22c706.png)
+![HTML report with data parsed from an OLStats log and stored in memory](https://dcav.pw/c22c706.png)
 
 ## TODO
 
