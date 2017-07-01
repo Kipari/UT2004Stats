@@ -25,7 +25,7 @@
         <td class=\"hl\">#{db.players.select {|id,p| not p.bot?}.count}</td>
         <td class=\"hl\">#{db.matches.count}</td>
 	<td class=\"hl\">#{db.kills.count}</td>
-	<td class=\"hl\">#{db.scores.values.sum}</td>
+	<td class=\"hl\">#{db.scores.values.reduce(:+).round(2)}</td>
       </tr>}
       %>
     </table>
