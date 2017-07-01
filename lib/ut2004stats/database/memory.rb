@@ -87,6 +87,9 @@ module UT2004Stats
 
       def new_player ( event )
         player = event.player
+
+        @current_match.players << player.id
+        
         # Check if player already exists
         unless @players[player.id]
           @players[player.id] = player

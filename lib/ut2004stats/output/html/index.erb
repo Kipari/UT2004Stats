@@ -27,6 +27,26 @@
       %>
     </table>
 
+        <h2>Players</h2>
+    <table>
+      <tr>
+	<th>Name</th>
+	<th>Kills</th>
+	<th>Deaths</th>
+	<th>Matches</th>
+      </tr>
+      <% player_data.each do |player| %>
+      <%= %Q{
+      <tr>
+	<td>#{player[:name]}</td>
+	<td>#{player[:kill_count]}</td>
+	<td>#{player[:death_count]}</td>
+	<td>#{player[:match_count]}</td>
+      </tr>}
+      %>
+      <% end %>
+    </table>
+
     <h2>Matches</h2>
     <table>
       <tr>
@@ -34,7 +54,7 @@
 	<th>Map</th>
 	<th>Gamemode</th>
       </tr>
-      <% db.matches.each do |match| %>
+      <% db.matches.sort.reverse.each do |match| %>
       <%= %Q{
       <tr>
 	<td>#{match.start_time.strftime("%a, %b %e %Y at %H:%M")}</td>
@@ -44,6 +64,7 @@
       %>
       <% end %>
     </table>
+    
     <br />
     <i>Page generated at <%= Time.now %></i>
   </body>

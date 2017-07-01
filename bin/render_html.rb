@@ -18,4 +18,4 @@ outputter = UT2004Stats::Output::HTML.new
 
 parser.parse( ARGF.read, db )
 
-outputter.output( db )
+outputter.output( db, "output/" )
