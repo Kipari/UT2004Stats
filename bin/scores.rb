@@ -1,10 +1,9 @@
 #!/usr/bin/env ruby
 
-require 'ut2004stats/parser/OLStats'
-require 'ut2004stats/database/memory'
+require 'ut2004stats'
 
-parser = UT2004Stats::Parser::OLStats.new
-db = UT2004Stats::Database::Memory.new
-parser.parse( ARGF.read, db )
-
-db.scores.map {|p,s| [p.name,s] }.to_h.each {|p,s| puts "#{p}, #{s}"}
+ps = UT2004Stats::Player.where(bot: false)
+pscores = ps.map{|p| [p.name, p.scores.inject(0) { |sum, s| sum + s.score }]}.to_h
+pscores.each do |k,v|
+  puts "#{k}\t#{v}"
+end
