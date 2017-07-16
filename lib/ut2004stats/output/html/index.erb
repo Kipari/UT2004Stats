@@ -22,10 +22,10 @@
       </tr>
       <%= %Q{
       <tr>
-        <td class=\"hl\">#{db.players.select {|id,p| not p.bot?}.count}</td>
-        <td class=\"hl\">#{db.matches.count}</td>
-	<td class=\"hl\">#{db.kills.count}</td>
-	<td class=\"hl\">#{db.scores.values.reduce(:+).round(2)}</td>
+        <td class=\"hl\">#{Player.where(bot: false).count}</td>
+        <td class=\"hl\">#{Match.all.count}</td>
+	<td class=\"hl\">#{Kill.count}</td>
+	<td class=\"hl\">#{(Score.all.inject(0) { |sum, s| sum + s.score }).round(2)}</td>
       </tr>}
       %>
     </table>
@@ -67,11 +67,11 @@
 	<th>Map</th>
 	<th>Gamemode</th>
       </tr>
-      <% db.matches.sort.reverse[0..9].each do |match| %>
+      <% Match.all.sort.reverse[0..9].each do |match| %>
       <%= %Q{
       <tr>
 	<td><a href="/match/#">#{match.start_time.strftime("%a, %b %e %Y at %H:%M")}</a></td>
-	<td>#{match.map}</td>
+	<td>#{match.map_id}</td>
 	<td>#{UT2004Stats::Strings::GAMEMODES[match.gamemode] || match.gamemode}</td>
       </tr>}
       %>

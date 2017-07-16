@@ -1,5 +1,4 @@
-require 'ut2004stats/events'
-require 'ut2004stats/game'
+require 'ut2004stats'
 
 require 'erb'
 require 'fileutils'
@@ -7,17 +6,18 @@ require 'fileutils'
 module UT2004Stats
   module Output
     class HTML
-      def output ( db, out_dir )
+      def output ( out_dir )
         dir = File.dirname(__FILE__)
 
         # Player data retrieval
-        players = db.players.select { |id, p| p.bot? == false }
-        player_data = players.map do |id, player|
-	  { :id => id,
+        players = Player.where(bot: false)
+
+        player_data = players.map do |player|
+	  { :id => player.p_id,
             :name => player.name,
-            :kill_count => db.kills.select { |k| k.killer_id == id and players.include? k.victim_id }.count,
-            :death_count => db.kills.select { |k| k.victim_id == id and players.include? k.killer_id }.count,
-            :match_count => db.matches.select { |m| m.players.include?(id) }.count }
+            :kill_count => player.kills.count,
+            :death_count => player.deaths.count,
+            :match_count => player.scores.count }
         end
         
         sort_by_match_count = -> (a,b) { b[:match_count] <=> a[:match_count] }
