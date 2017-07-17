@@ -5,6 +5,8 @@ class CreateMatches < ActiveRecord::Migration[5.1]
       t.string :map_id
       t.string :gamemode
       t.string :gameparams
+
+      t.timestamps
     end
   end
 end

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UT2004 Stats - Match <%=match.id%></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+  </head>
+  <body>
+    <h1>UT2004 Stats</h1>
+    /<a href="../index.html">Root</a>/<a href="../match.html">Match</a>/<a href="<%=match.id%>.html"><%=match.id%></a>
+
+    <h2><%=match.gamemode%> on <%=match.map_id%></h2>
+    <table>
+      <tr>
+	<th class="desc" colspan="2">Match details</th>
+      </tr>
+      <tr>
+	<td class="hl">Map</td>
+	<td><%=match.map_id%></td>
+      </tr>
+      <tr>
+	<td class="hl">Gamemode</td>
+	<td><%=match.gamemode%></td>
+      </tr>
+      <tr>
+	<td class="hl">Time</td>
+	<td><%=match.start_time%></td>
+      </tr>
+    </table>
+    
+    <h2>Match scores</h2>
+    <table>
+      <tr>
+	<th class="desc" colspan="5">Scores for players in match</th>
+      </tr>
+      <tr>
+	<th>Rank #</th>
+	<th>Name</th>
+	<th>Score</th>
+	<th>Kills</th>
+	<th>Deaths</th>
+      </tr>
+      <% rank = 0
+	 match.scores.order(score: :desc).each do |score|
+	   player = score.player
+	   rank += 1%>
+      <%= %Q{
+      <tr>
+	<td class=\"hl\">#{rank}</td>
+	<td><a href="/player/#{player.id}">#{player.name}</a></td>
+	<td>#{score.score}</td>
+	<td>#{match.kills.where(killer_id: player.id).count}</td>
+	<td>#{match.kills.where(victim_id: player.id).count}</td>
+      </tr>}
+      %>
+      <% end %>
+    </table>
+    <br />
+    <i>Page generated at <%= Time.now %></i>
+  </body>
+</html>

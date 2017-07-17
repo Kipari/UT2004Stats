@@ -9,6 +9,8 @@
   </head>
   <body>
     <h1>UT2004 Stats</h1>
+    /<a href="index.html">Root</a>/
+    
     <h2>Summary</h2>
     <table>
       <tr>
@@ -67,10 +69,10 @@
 	<th>Map</th>
 	<th>Gamemode</th>
       </tr>
-      <% Match.all.sort.reverse[0..9].each do |match| %>
+      <% Match.last(10).reverse.each do |match| %>
       <%= %Q{
       <tr>
-	<td><a href="/match/#">#{match.start_time.strftime("%a, %b %e %Y at %H:%M")}</a></td>
+	<td><a href="match/#{match.id}.html">#{match.start_time.strftime("%a, %b %e %Y at %H:%M")}</a></td>
 	<td>#{match.map_id}</td>
 	<td>#{UT2004Stats::Strings::GAMEMODES[match.gamemode] || match.gamemode}</td>
       </tr>}

@@ -6,9 +6,18 @@ require 'fileutils'
 module UT2004Stats
   module Output
     class HTML
+      def initialize
+        @dir = File.dirname(__FILE__)
+      end
+      
       def output ( out_dir )
-        dir = File.dirname(__FILE__)
+        gen_index out_dir
+        gen_matches out_dir
 
+        FileUtils.cp("#{@dir}/html/style.css", out_dir)
+      end
+
+      def gen_index ( out_dir )
         # Player data retrieval
         players = Player.where(bot: false)
 
@@ -26,10 +35,26 @@ module UT2004Stats
         File.open("#{out_dir}/index.html", 'w+') do |f|
           vars = binding
           vars.local_variable_set(:player_data, player_data)
-          f << ERB.new(File.read "#{dir}/html/index.erb").result(vars)
+          f << ERB.new(File.read "#{@dir}/html/index.erb").result(vars)
         end
+      end
 
-        FileUtils.cp("#{dir}/html/style.css", out_dir)
+      def gen_matches ( out_dir )
+        FileUtils.mkdir_p("#{out_dir}/match")
+
+        matches = Match.all
+
+        matches.each do |match|
+          file_path = "#{out_dir}/match/#{match.id}.html"
+          if (File.file?(file_path) and
+              File::Stat.new(file_path).ctime > match.updated_at) then
+            next
+          end
+          File.open(file_path, 'w+') do |f|
+            vars = binding
+            f << ERB.new(File.read "#{@dir}/html/match.erb").result(vars)
+          end
+        end
       end
     end
   end
