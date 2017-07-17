@@ -25,8 +25,8 @@
 	<td><%=match.gamemode%></td>
       </tr>
       <tr>
-	<td class="hl">Time</td>
-	<td><%=match.start_time%></td>
+	<td class="hl">Started</td>
+	<td><%=match.start_time.strftime("%a, %b %e %Y at %H:%M")%></td>
       </tr>
     </table>
     

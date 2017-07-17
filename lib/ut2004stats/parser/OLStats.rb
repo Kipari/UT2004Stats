@@ -33,6 +33,11 @@ module UT2004Stats
             score_entry = Score.find_or_create_by(match_id: match_id, player_id: player_id)
             score_entry.increment!(:score, score)
           when :NG # New Game
+            if @match
+              @match.save
+              clear_match_state
+            end
+            
             start_time = DateTime.parse( entry[2] )
             map_id = entry[4]
             map_name = entry[5]
@@ -123,7 +128,6 @@ module UT2004Stats
           when :PP # ?
           when :EG # End Game
             reason = entry[2]
-
             clear_match_state
           end
         end
